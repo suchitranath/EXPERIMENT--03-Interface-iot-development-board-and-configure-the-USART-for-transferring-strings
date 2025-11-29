@@ -112,7 +112,8 @@ int main(void)
   while (1)
   {
     
-     printf("suchitra\n");
+     printf("Suchitra Nath\n");
+     printf("212223220112\n");
      HAL_Delay(2000);
     
   }
