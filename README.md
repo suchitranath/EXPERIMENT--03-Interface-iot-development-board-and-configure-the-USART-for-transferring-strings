@@ -92,35 +92,22 @@ UART transmits and receives data asynchronously, meaning there is no shared cloc
 ## STM 32 CUBE PROGRAM :
 ```
 #include "main.h"
-#include "stdbool.h"
-bool ir_sensor;
-void digi_inp();
-
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 int main(void)
 {
-
   HAL_Init();
   SystemClock_Config();
   MX_GPIO_Init();
-  while (1)
+  While(1)
   {
-    digi_inp();
+      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+      HAL_Delay(3000);
+      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+      HAL_Delay(2000);
   }
 }
-void digi_inp()
-{
-	ir_sensor=HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_3);
-	if(ir_sensor==0)
-	{
-		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_SET);
-	}
-	else
-	{
-		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_RESET);
-	}
-}
+
 ```
 
 
